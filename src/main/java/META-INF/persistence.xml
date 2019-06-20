@@ -4,6 +4,32 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	
 	<persistence-unit name="pos-java-maven-hibernate">
+		<!-- Dados de conexão com banco -->
+		
+		<properties>
+		
+		<!-- Dados de conexão com banco -->
+			<property name="hibernate.connection.driver_class" 
+			value="org.postgresql.Driver"/>
+		
+		<!-- URL do banco -->
+			<property name="hibernate.connetion.url"
+			value="jdbc:postegresql://localhost:5432/posjavahibernate"/>
+		
+		<!-- Lígua que le vai usar -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>	
+		
+		<!-- Usuário do banco de dados -->
+			<property name="hibernate.connection.username" value="postgres"/>
+			
+		<!-- Senha pra logar -->
+			<property name="hibernate.connection.password" value="admin"/>
+		
+		<!-- Ações automáticas -->
+			<property name="hibernate.hbn2dll.auto" value="update"/>
+					
+		</properties>
+		
 	</persistence-unit>
 	
 </persistence>
