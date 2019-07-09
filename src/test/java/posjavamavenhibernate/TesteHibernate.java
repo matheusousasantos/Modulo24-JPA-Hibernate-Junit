@@ -39,5 +39,27 @@ public class TesteHibernate {
 		System.out.println(pessoa);
 
 	}
+	
+	
+	@Test
+	public void testeUpdate() {
+		
+		DAOGeneric<UsuarioPessoa> dg = new DAOGeneric<UsuarioPessoa>();
+		
+		UsuarioPessoa pessoa = new UsuarioPessoa();
+		
+		pessoa.setId(2L);
+		
+		pessoa = dg.pesquisar(pessoa);
+		
+		System.out.println(pessoa);
+		
+		pessoa.setNone("Matheus Sousa Atualizado!");
+		
+		pessoa = dg.updateMerge(pessoa);
+		
+		System.out.println(pessoa);
 
+	}
+	
 }
