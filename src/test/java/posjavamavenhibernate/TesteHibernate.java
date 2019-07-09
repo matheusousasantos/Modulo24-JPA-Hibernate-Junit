@@ -95,4 +95,19 @@ public class TesteHibernate {
 		
 	}
 	
+	@Test
+	public void testeQueryList() {
+		
+		DAOGeneric<UsuarioPessoa> dg = new DAOGeneric<UsuarioPessoa>();
+		List<UsuarioPessoa> pessoas = dg.getEntityManager().createQuery("from UsuarioPessoa where none = 'Matheus Santos'").getResultList();
+		
+		for (UsuarioPessoa usuarioPessoa : pessoas) {
+			
+			System.out.println(usuarioPessoa);
+			System.out.println("-----------------------");
+			
+		}
+		
+	}
+	
 }

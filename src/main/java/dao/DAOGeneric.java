@@ -69,6 +69,10 @@ public class DAOGeneric<E> { // Pode ser qualquer letra
 		
 	}
 	
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
+	
 
 }
 
