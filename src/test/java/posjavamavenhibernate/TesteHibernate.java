@@ -62,4 +62,19 @@ public class TesteHibernate {
 
 	}
 	
+	@Test
+	public void testeDelete() {
+		
+		DAOGeneric<UsuarioPessoa> dg = new DAOGeneric<UsuarioPessoa>();
+		
+		UsuarioPessoa pessoa = new UsuarioPessoa();
+		
+		pessoa.setId(1L);
+		
+		pessoa = dg.pesquisar(pessoa);
+	
+		dg.deletarPorId(pessoa);
+		
+	}
+	
 }

@@ -3,6 +3,9 @@ package dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.junit.Test;
+
+import model.UsuarioPessoa;
 import posjavamavenhibernate.HibernateUtil;
 
 public class DAOGeneric<E> { // Pode ser qualquer letra
@@ -34,5 +37,18 @@ public class DAOGeneric<E> { // Pode ser qualquer letra
 		
 		return entidadeSalva;
 	}
+	
+	public void deletarPorId(E entidade) {
+		Object id = HibernateUtil.getPrimaryKey(entidade);
+		
+		EntityTransaction transaction = entityManager.getTransaction();
+		
+		transaction.begin();
+		entityManager.createNativeQuery("delete from " 
+		+ entidade.getClass().getSimpleName().toLowerCase() + " where id=" + id).executeUpdate(); 
+		transaction.commit(); //Grava a alteração
+		
+	}
 
 }
+
