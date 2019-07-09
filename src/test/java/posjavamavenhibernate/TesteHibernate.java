@@ -110,4 +110,22 @@ public class TesteHibernate {
 		
 	}
 	
+	@Test
+	public void testeQueryListMaxResult() {
+		
+		DAOGeneric<UsuarioPessoa> dg = new DAOGeneric<UsuarioPessoa>();
+		List<UsuarioPessoa> pessoas = dg.getEntityManager().createQuery("from UsuarioPessoa order by none")
+				.setMaxResults(2)
+				.getResultList();
+		
+		for (UsuarioPessoa usuarioPessoa : pessoas) {
+			
+			System.out.println(usuarioPessoa);
+			System.out.println("-----------------------");
+			
+		}
+		
+	}
+
+	
 }
