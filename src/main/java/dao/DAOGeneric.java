@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -49,6 +51,24 @@ public class DAOGeneric<E> { // Pode ser qualquer letra
 		transaction.commit(); //Grava a alteração
 		
 	}
+	
+	
+	public List<E> listar(Class<E> entidade) {
+		
+		EntityTransaction transaction = entityManager.getTransaction();
+		
+		transaction.begin();
+		
+		List<E> lista = entityManager.createQuery("from " + entidade.getName()).getResultList();
+		
+//		Seria o mesmo de "from UsuarioPesssoa"
+		
+		transaction.commit();
+		
+		return lista;
+		
+	}
+	
 
 }
 
