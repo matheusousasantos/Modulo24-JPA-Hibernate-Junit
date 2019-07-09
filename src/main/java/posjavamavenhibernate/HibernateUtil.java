@@ -32,5 +32,9 @@ public class HibernateUtil {
 //	Que será usado pra fazer as operações no banco de dados
 		return factory.createEntityManager();
 	}
+	
+	public static Object getPrimaryKey(Object entity) { //Retorna a primary key do objeto passado
+		return factory.getPersistenceUnitUtil().getIdentifier(entity);
+	}
 
 }
