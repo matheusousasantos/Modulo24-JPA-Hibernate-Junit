@@ -6,6 +6,8 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 	<persistence-unit name="pos-java-maven-hibernate">
 		
 		<class>model.UsuarioPessoa</class>
+		<class>model.TelefoneUser</class>
+		
 		
 		<properties>
 

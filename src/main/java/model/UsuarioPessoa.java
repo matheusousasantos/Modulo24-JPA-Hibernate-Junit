@@ -1,11 +1,14 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 
@@ -26,6 +29,10 @@ public class UsuarioPessoa {
 	private String login;
 	private String senha;
 	private String idade;
+	
+	@OneToMany(mappedBy = "usuarioPessoa")
+	private List<TelefoneUser> telefones;
+	
 	
 	public String getIdade() {
 		return idade;
@@ -68,6 +75,13 @@ public class UsuarioPessoa {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public List<TelefoneUser> getTelefones() {
+		return telefones;
+	}
+	public void setTelefones(List<TelefoneUser> telefones) {
+		this.telefones = telefones;
 	}
 	@Override
 	public String toString() {
