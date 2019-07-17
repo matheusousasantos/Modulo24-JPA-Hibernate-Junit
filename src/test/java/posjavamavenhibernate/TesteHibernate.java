@@ -151,6 +151,51 @@ public class TesteHibernate {
 		
 		System.out.println("Soma de todas as idades:" + somaIdade);
 	}
-
 	
+	@Test
+	public void testeNamedQuery1() {
+		
+		DAOGeneric<UsuarioPessoa> dg = new DAOGeneric<UsuarioPessoa>();
+		List<UsuarioPessoa> pessoas = dg.getEntityManager().createNamedQuery("UsuarioPessoa.todos").getResultList();
+		
+		for (UsuarioPessoa usuarioPessoa : pessoas) {
+			
+			System.out.println(usuarioPessoa);
+			
+		}
+		
+	}
+	
+	@Test
+	public void testeNamedQuery2() {
+		
+		DAOGeneric<UsuarioPessoa> dg = new DAOGeneric<UsuarioPessoa>();
+		List<UsuarioPessoa> pessoas = dg.getEntityManager().createNamedQuery("UsuarioPessoa.buscarPorNome")
+				.setParameter("nome", "Matheus Santos").getResultList();
+		
+		for (UsuarioPessoa usuarioPessoa : pessoas) {
+			
+			System.out.println(usuarioPessoa);
+			
+		}
+		
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

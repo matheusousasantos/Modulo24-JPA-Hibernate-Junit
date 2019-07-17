@@ -4,8 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+
+@NamedQueries ({
+	@NamedQuery(name = "UsuarioPessoa.todos", query = "select u from UsuarioPessoa u"),
+	@NamedQuery(name = "UsuarioPessoa.buscarPorNome", query = "select c from UsuarioPessoa c where c.none = :nome")
+})
+
 public class UsuarioPessoa {
 	
 	@Id
