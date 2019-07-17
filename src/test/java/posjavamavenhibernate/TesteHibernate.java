@@ -126,6 +126,22 @@ public class TesteHibernate {
 		}
 		
 	}
+	
+	@Test
+	public void testQueryListParameter() {
+		DAOGeneric<UsuarioPessoa> dg = new DAOGeneric<UsuarioPessoa>();
+		List<UsuarioPessoa> lista =  dg.getEntityManager().createQuery("from UsuarioPessoa where none =:nome")
+				.setParameter("nome", "Matheus Santos")
+				.setParameter("sobrenome", "Sousa")
+				.setMaxResults(1).getResultList();
+		
+		for (UsuarioPessoa usuarioPessoa : lista) {
+			System.out.println(usuarioPessoa);
+		}
+		
+	}
+	
+	
 
 	
 }
