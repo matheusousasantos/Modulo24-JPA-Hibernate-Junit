@@ -1,11 +1,11 @@
 package posjavamavenhibernate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
 import dao.DAOGeneric;
+import model.TelefoneUser;
 import model.UsuarioPessoa;
 
 public class TesteHibernate {
@@ -177,6 +177,38 @@ public class TesteHibernate {
 			
 			System.out.println(usuarioPessoa);
 			
+		}
+		
+	}
+	
+	@Test
+	public void testeGravaTelefone() {
+		
+		DAOGeneric dg = new DAOGeneric();
+		UsuarioPessoa pessoa = (UsuarioPessoa) dg.pesquisarId(3L, UsuarioPessoa.class);
+		
+		TelefoneUser telefone = new TelefoneUser();
+		telefone.setTipo("Casa");
+		telefone.setNumero("32241645");
+		telefone.setUsuarioPessoa(pessoa);
+		
+		dg.salvar(telefone);
+		
+	}
+	
+	@Test
+	public void testeConsultarTelefones() {
+		
+		DAOGeneric dg = new DAOGeneric();
+		UsuarioPessoa pessoa = (UsuarioPessoa) dg.pesquisarId(3L, UsuarioPessoa.class);
+		
+		for (TelefoneUser telefone : pessoa.getTelefones()) {
+			
+			System.out.println(telefone.getNumero());
+			System.out.println(telefone.getTipo());
+			System.out.println(telefone.getUsuarioPessoa().getNone());
+			System.out.println("----------------------------------------------");
+
 		}
 		
 	}

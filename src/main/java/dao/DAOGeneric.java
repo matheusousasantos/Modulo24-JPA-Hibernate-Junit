@@ -29,6 +29,13 @@ public class DAOGeneric<E> { // Pode ser qualquer letra
 		return e;
 
 	}
+	
+	public E pesquisarId(Long id, Class<E> entidade) {
+
+		E e = (E) entityManager.find(entidade, id);
+		return e;
+
+	}
 
 	public E updateMerge(E entidade) {
 
